@@ -18,6 +18,9 @@ dependencies = [
     "pandas (>=2.2.3,<3.0.0)"
 ]
 
+[tool.poetry.scripts]
+dev = "api_vitivinicultura.run:dev"
+
 [tool.poetry]
 packages = [{include = "api_vitivinicultura", from = "src"}]
 
