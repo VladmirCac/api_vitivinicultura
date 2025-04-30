@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+from api_vitivinicultura.core.config import settings
+
 # URL do SQLite
-DATABASE_URL = "sqlite:///./api_vitivinicultura.db"
+DATABASE_URL = settings.DATABASE_URL
 
 # Cria o engine
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})

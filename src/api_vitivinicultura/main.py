@@ -4,12 +4,9 @@ from fastapi.exceptions import RequestValidationError
 from api_vitivinicultura.exceptions import handlers
 from api_vitivinicultura.routers.users import router as user_router
 from api_vitivinicultura.routers.auth import router as login_router
+from api_vitivinicultura.core.config import settings
 
-app = FastAPI(
-    title="api_vitivinicultura",
-    version="1.0.0",
-    description="API inserção de dados ao modelo de predição"
-)
+app = FastAPI(**settings.API_SETTINGS)
 
 app.include_router(login_router)
 app.include_router(user_router)

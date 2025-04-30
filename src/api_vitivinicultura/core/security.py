@@ -3,12 +3,13 @@ from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status, Header
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from api_vitivinicultura.schemas.auth import TokenData
+from api_vitivinicultura.core.config import settings
 import bcrypt
 
 # Definições principais
-SECRET_KEY = "sua_chave_supersecreta_aqui"  # Depois colocar isso em variável de ambiente
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = settings.ALGORITHM
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 security = HTTPBearer(auto_error=True)
 

@@ -1,13 +1,14 @@
 from pydantic import BaseModel, Field
 
 class UserCreate(BaseModel):
-    user_name: str = Field(..., example="vladmir_cac", description="Username for the user")
-    password: str = Field(..., example="strongpassword123", description="User password")
-    obs: str | None = Field(
-        default=None,
-        example="This user is an admin",
-        description="Optional observation about the user"
-    )
+    user_name: str = Field(..., example="UserName")
+    password: str = Field(..., example="UserPassword")
+    obs: str | None = Field(None, example="Optional observation about the user")
+
+class UserUpdate(BaseModel):
+    user_name: str | None = Field(None, example="NewUsername")
+    password: str | None = Field(None, example="NewPassord")
+    obs: str | None = Field(None, example="New user observation")
 
 class UserCreateResponse(BaseModel):
     id: int
@@ -16,7 +17,8 @@ class UserCreateResponse(BaseModel):
 class UserResponse(BaseModel):
     id: int
     user_name: str
-    obs: str | None = None # campo opcional
-
+    obs: str | None = None
+    
+    #CLASSE UTILIZADA PARA converter um objeto ORM diretamente em um Pydantic model
     class Config:
         from_attributes  = True

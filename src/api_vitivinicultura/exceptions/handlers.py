@@ -3,13 +3,11 @@ from fastapi import Request, HTTPException, status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 
-
 async def http_exception_handler(request: Request, exc: HTTPException):
     return JSONResponse(
         status_code=exc.status_code,
         content={"errors": exc.detail}
     )
-
 
 async def generic_exception_handler(request: Request, exc: Exception):
     return JSONResponse(
