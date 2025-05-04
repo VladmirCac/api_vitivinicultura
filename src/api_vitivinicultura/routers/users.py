@@ -4,9 +4,9 @@ from api_vitivinicultura.core.database import get_db
 from api_vitivinicultura.models.user import User
 from api_vitivinicultura.schemas.user import UserCreate, UserCreateResponse, UserResponse, UserUpdate
 from api_vitivinicultura.schemas.error import ErrorResponse
-from api_vitivinicultura.core.security import get_current_user, hash_password
 from api_vitivinicultura.schemas.auth import TokenData
-from typing import List
+from api_vitivinicultura.core.security import get_current_user, hash_password
+
 
 router = APIRouter(
     prefix="/users",
@@ -47,7 +47,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 
 @router.get(
     "/", 
-    response_model=List[UserResponse],
+    response_model=list[UserResponse],
     responses={
         200: {"description": "List of all users"},
         422: {"model": ErrorResponse},
