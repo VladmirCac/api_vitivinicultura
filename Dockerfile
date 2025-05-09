@@ -18,5 +18,7 @@ RUN poetry install --no-root
 # Expor a porta padrão
 EXPOSE 8000
 
+ENV PYTHONPATH="${PYTHONPATH}:/app/src"
+
 # Comando para iniciar a aplicação
-CMD ["bash", "-c", "poetry run alembic upgrade head && poetry run uvicorn src.api_vitivinicultura.main:app --host=0.0.0.0 --port=8000"]
+CMD ["bash", "-c", "poetry run alembic upgrade head && poetry run uvicorn api_vitivinicultura.main:app --host=0.0.0.0 --port=8000"]
