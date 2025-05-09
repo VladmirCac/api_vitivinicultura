@@ -423,6 +423,18 @@ test = ["certifi (>=2024)", "cryptography-vectors (==44.0.2)", "pretend (>=0.7)"
 test-randomorder = ["pytest-randomly"]
 
 [[package]]
+name = "diskcache"
+version = "5.6.3"
+description = "Disk Cache -- Disk and file backed persistent cache."
+optional = false
+python-versions = ">=3"
+groups = ["main"]
+files = [
+    {file = "diskcache-5.6.3-py3-none-any.whl", hash = "sha256:5e31b2d5fbad117cc363ebaf6b689474db18a1f6438bc82358b024abd4c2ca19"},
+    {file = "diskcache-5.6.3.tar.gz", hash = "sha256:2c3a3fa2743d8535d832ec61c2054a1641f41775aa7c556758a109941e33e4fc"},
+]
+
+[[package]]
 name = "ecdsa"
 version = "0.19.1"
 description = "ECDSA cryptographic signature library (pure python)"
@@ -1516,5 +1528,5 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.13"
-content-hash = "99b7f6f39f47ada448e457fb22a56e00315eee77c8771111be0e6b73357e2bbe"
+python-versions = ">=3.13,<4.0"
+content-hash = "db765fcde0a2629e7b3967900c89cd112d3b4c5f4c71bfea16b520c40f5998c3"

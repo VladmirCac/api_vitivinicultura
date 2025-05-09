@@ -11,7 +11,9 @@ async def fetch_html(url: str) -> BeautifulSoup:
             response = await client.post(url)
             response.raise_for_status()
             return BeautifulSoup(response.text, "html.parser")
+    except httpx.ConnectError:
+        raise Exception("Unable to connect to Embrapa website. Please try again later.")
     except httpx.RequestError as e:
-        raise RuntimeError(f"Erro ao fazer requisição para {url}: {e}")
-    except httpx.HTTPStatusError as e:
-        raise RuntimeError(f"Erro HTTP ao acessar {url}: {e.response.status_code}")
+        raise Exception(f"Connection error when accessing URL: {url}")
+    except Exception as e:
+        raise Exception(f"Connection error when accessing {url}: {str(e)}")

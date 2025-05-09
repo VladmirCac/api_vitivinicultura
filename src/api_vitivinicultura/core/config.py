@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     API_SETTINGS: dict = {
         "title": "API Vitivinicultura",
         "version": "1.0.0",
-        "description": "API para inserção de dados no modelo de predição"
+        "description": "API para disponibilizar dados públicos da vitivinicultura brasileira, coletados do site da Embrapa."
     }
 
     DATABASE_URL: str
