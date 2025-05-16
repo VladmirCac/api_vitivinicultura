@@ -1,4 +1,5 @@
 from api_vitivinicultura.crawlers.base import fetch_html
+from asyncio import gather
 
 BASE_URL = "http://vitibrasil.cnpuv.embrapa.br/index.php"
 
@@ -80,8 +81,6 @@ async def get_processamento(ano: int, sub: int):
     
 async def get_processamentos(ano):
     
-    from asyncio import gather
-    
     tarefas = [
         get_processamento(ano, 1),
         get_processamento(ano, 2),
@@ -104,8 +103,6 @@ async def get_importacao(ano: int, sub: int):
 
 async def get_importacoes(ano):
     
-    from asyncio import gather
-    
     tarefas = [
         get_importacao(ano, 1),
         get_importacao(ano, 2),
@@ -123,8 +120,6 @@ async def get_exportacao(ano: int, sub: int):
     return await get_dados(url)
 
 async def get_exportacoes(ano):
-    
-    from asyncio import gather
     
     tarefas = [
         get_exportacao(ano, 1),
