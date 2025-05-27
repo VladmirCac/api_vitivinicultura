@@ -4,7 +4,7 @@ from api_vitivinicultura.schemas import vitivinicultura as schemas_viti
 from api_vitivinicultura.schemas.error import ErrorResponse
 from api_vitivinicultura.schemas.auth import TokenData
 from api_vitivinicultura.core.security import get_current_user
-from api_vitivinicultura.services.cache import cache
+from api_vitivinicultura.services.cache import cache, expireTime
 
 router = APIRouter(
     prefix="/crawler",
@@ -33,7 +33,7 @@ async def producao(
             "ano": params.ano,
             "resultados": [result]
         }
-        cache.set(key, resultado, expire=60 * 60 * 12)
+        cache.set(key, resultado, expire=expireTime)
         return resultado
     except Exception as e:
         raise HTTPException(
@@ -74,7 +74,7 @@ async def processamentos(
                 "ano": ano,
                 "resultados": [result]
             }
-        cache.set(key, resultado, expire=60 * 60 * 12)
+        cache.set(key, resultado, expire=expireTime)
         return resultado
     except Exception as e:
         raise HTTPException(
@@ -103,7 +103,7 @@ async def comercializacao(
             "ano": params.ano,
             "resultados": [result]
         }
-        cache.set(key, resultado, expire=60 * 60 * 12)
+        cache.set(key, resultado, expire=expireTime)
         return resultado
     except Exception as e:
         raise HTTPException(
@@ -144,7 +144,7 @@ async def importacoes(
                 "ano": ano,
                 "resultados": [result]
             }
-        cache.set(key, resultado, expire=60 * 60 * 12)
+        cache.set(key, resultado, expire=expireTime)
         return resultado
     except Exception as e:
         raise HTTPException(
@@ -185,7 +185,7 @@ async def exportacoes(
                 "ano": ano,
                 "resultados": [result]
             }
-        cache.set(key, resultado, expire=60 * 60 * 12)
+        cache.set(key, resultado, expire=expireTime)
         return resultado
     except Exception as e:
         raise HTTPException(
